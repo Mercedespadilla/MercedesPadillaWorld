@@ -7,7 +7,7 @@ package Menu;
 
 /**
  *
- * @author ufg
+ * @author padilla
  */
 public class MercedesPadillaWorld {
 
