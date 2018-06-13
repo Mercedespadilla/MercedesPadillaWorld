@@ -4,12 +4,17 @@ public class EdificioBarraca {
     private int numtropas;
     private int porcentaje;
     private int numEdificio;
+    private int precioMadera;
+    private int precioOro;
     
 
     public EdificioBarraca(int numtropas, int porcentaje, int numEdificio) {
         this.numtropas = numtropas;
-        this.porcentaje = porcentaje;
+        porcentaje = 500;
         this.numEdificio = numEdificio;
+        precioMadera = 300;
+        precioOro = 200;
+        
     }
 
     public int getNumtropas() {
@@ -35,6 +40,21 @@ public class EdificioBarraca {
     public void setNumEdificio(int numEdificio) {
         this.numEdificio = numEdificio;
     }
-    
+
+    public int getPrecioMadera() {
+        return precioMadera;
+    }
+
+    public void setPrecioMadera(int precioMadera) {
+        this.precioMadera = precioMadera;
+    }
+
+    public int getPrecioOro() {
+        return precioOro;
+    }
+
+    public void setPrecioOro(int precioOro) {
+        this.precioOro = precioOro;
+    }
     
 }

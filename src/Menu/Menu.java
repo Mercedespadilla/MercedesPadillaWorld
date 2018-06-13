@@ -1,4 +1,5 @@
 package Menu;
+import Edificaciones.EdificioAyuntamiento;
 import java.util.Scanner;
 
 /**
@@ -14,9 +15,12 @@ public class Menu {
     
     static String nomUser;
     static String raza;
-    static boolean turno;
     static Usuario u1;
     static Usuario u2;
+    static boolean validarGanador = false;
+    static boolean turno = true;
+    static boolean atacar = false;
+    
     static Scanner teclado;
     
     public static void main(String[] args) {
@@ -27,6 +31,9 @@ public class Menu {
         
         menuInicio();
         menuJuego();
+        iniciaJuego();
+        
+        
     }
     
     public static void menuInicio(){
@@ -54,10 +61,24 @@ public class Menu {
     }
 
     private static void menuJuego() {
-        System.out.print("Ingrese su nombre: ");
-        nomUser = teclado.nextLine();
-        System.out.println("Elige tu raza");
-        raza = menuCriatura();   
+        for (int i = 0; i < 2; i++){ 
+            int p = i+1;
+            System.out.println("Player " + p);
+            System.out.print("Ingrese su nombre: ");
+            nomUser = teclado.nextLine();
+            System.out.println("Elige tu raza");
+            raza = menuCriatura();
+            teclado.nextLine();
+            
+            if(i == 0){
+                u1 = new Usuario(nomUser, raza);
+                System.out.println(u1.getJugador() + ", " + u1.getRaza());
+            }
+            else{
+                u2 = new Usuario(nomUser, raza);
+                System.out.println(u2.getJugador() + ", " + u2.getRaza());
+            }
+        } 
     }
 
     private static String menuCriatura() {
@@ -69,8 +90,7 @@ public class Menu {
          do{
              System.out.print("Ingrese opcion: ");
             opc = teclado.nextInt();
-            teclado.nextLine();
-            teclado.nextLine();
+            teclado.next();
             switch(opc){
                 case 1:
                     return "Criatura Magica";
@@ -84,6 +104,73 @@ public class Menu {
         }while(opc > 0 && opc < 4);
          
          return "0";
+    }
+
+    private static void iniciaJuego() {
+        
+        EdificioAyuntamiento ayuntaU1 = new EdificioAyuntamiento();
+        EdificioAyuntamiento ayuntaU2 = new EdificioAyuntamiento();
+        
+        System.out.println("\nINICIA EL JUEGO");
+        
+        while(validarGanador == false){
+            if (turno){
+                System.out.println(u1.getJugador() + " tienes: \n" +
+                        ayuntaU1.getMadera() + " madera\n" +
+                        ayuntaU1.getOro() + " oro\n" + 
+                        ayuntaU1.getNumConstructores() + " constructores\n" +
+                        ayuntaU1.getNumGuerreros() + " guerreros\n" + 
+                        ayuntaU1.getNumVehiculos() + " vehiculos\n");
+                
+                accionesJuego();
+                
+                turno = false;
+            }
+            else{
+                
+                System.out.println(u2.getJugador() + " tienes: \n" +
+                        ayuntaU2.getMadera() + " madera\n" +
+                        ayuntaU2.getOro() + " oro\n" + 
+                        ayuntaU2.getNumConstructores() + " constructores\n" +
+                        ayuntaU2.getNumGuerreros() + " guerreros\n" + 
+                        ayuntaU2.getNumVehiculos() + " vehiculos\n");
+                
+                
+                
+                turno = true;
+            }
+        }
+        
+    }
+
+    private static void accionesJuego() {
+        System.out.println("1. Construir");
+        System.out.println("2. Atacar");
+        
+        int opc;
+        do{
+            opc = teclado.nextInt();
+            teclado.nextLine();
+            switch(opc){
+                case 1:
+                    construirEdificio();
+                    break;
+                case 2:
+                    
+                    break;
+            }
+       
+        }while(opc < 1 && opc > 3);
+    }
+
+    private static void construirEdificio() {
+        System.out.println("1. Construir barraca (200 oro, 300 madera)");
+        System.out.println("2. Construir recolector de madera (200 oro)");
+        System.out.println("3. Construir recolector de oro (200 madera)");
+        System.out.println("4. Construir taller (300 oro, 400 madera)");
+        System.out.println("5. Construir casa de constructor (1500 oro, 1500 madera)");
+        
+        
     }
     
 }

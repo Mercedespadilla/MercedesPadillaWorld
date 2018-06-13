@@ -13,36 +13,12 @@ public class EdificioRecolectorOro {
     private int numOro;
     private int numEdificaciones;
     private int porcentaje;
+    private int precioMadera;
 
-    public int getPorcentaje() {
-        return porcentaje;
-    }
-
-    public void setPorcentaje(int porcentaje) {
-        this.porcentaje = porcentaje;
-    }
-
-    public EdificioRecolectorOro(int numOro, int numEdificaciones, int porcentaje) {
+    public EdificioRecolectorOro(int numOro, int numEdificaciones) {
         this.numOro = numOro;
         this.numEdificaciones = numEdificaciones;
-        this.porcentaje= porcentaje;
+        porcentaje = 500  ; 
     }
-
-    public int getNumOro() {
-        return numOro;
-    }
-
-    public void setNumOro(int numOro) {
-        this.numOro = numOro;
-    }
-
-    public int getNumEdificaciones() {
-        return numEdificaciones;
-    }
-
-    public void setNumEdificaciones(int numEdificaciones) {
-        this.numEdificaciones = numEdificaciones;
-    }
-    
     
 }

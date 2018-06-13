@@ -4,12 +4,16 @@ public class EdificioConstructor {
     private int numConstructor;
     private int numEdificaciones;
     private int porcentaje;
+    private int precioMadera;
+    private int precioOro;
     
 
     public EdificioConstructor(int numConstructor, int numEdificaciones,int porcentaje) {
         this.numConstructor = numConstructor;
         this.numEdificaciones = numEdificaciones;
-        this.porcentaje= porcentaje;
+        porcentaje= 500;
+        precioMadera = 1500;
+        precioOro = 1500;
     }
 
     public int getPorcentaje() {
@@ -36,5 +40,22 @@ public class EdificioConstructor {
     public void setNumEdificaciones(int numEdificaciones) {
         this.numEdificaciones = numEdificaciones;
     }
+
+    public int getPrecioMadera() {
+        return precioMadera;
+    }
+
+    public void setPrecioMadera(int precioMadera) {
+        this.precioMadera = precioMadera;
+    }
+
+    public int getPrecioOro() {
+        return precioOro;
+    }
+
+    public void setPrecioOro(int precioOro) {
+        this.precioOro = precioOro;
+    }
+    
     
 }

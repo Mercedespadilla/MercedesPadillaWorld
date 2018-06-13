@@ -4,11 +4,13 @@ public class EdificioRecolectorMadera {
     private int numMadera;
     private int numEdificaciones;
     private int porcentaje;
+    private int precioOro;
 
     public EdificioRecolectorMadera(int numMadera, int numEdificaciones, int porcentaje) {
         this.numMadera = numMadera;
         this.numEdificaciones = numEdificaciones;
-        this.porcentaje= porcentaje;
+        porcentaje= 500;
+        precioOro = 200;
     }
 
     public int getPorcentaje() {
@@ -33,6 +35,14 @@ public class EdificioRecolectorMadera {
 
     public void setNumEdificaciones(int numEdificaciones) {
         this.numEdificaciones = numEdificaciones;
+    }
+
+    public int getPrecioOro() {
+        return precioOro;
+    }
+
+    public void setPrecioOro(int precioOro) {
+        this.precioOro = precioOro;
     }
     
 }

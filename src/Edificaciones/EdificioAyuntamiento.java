@@ -10,13 +10,13 @@ public class EdificioAyuntamiento {
     private int numVehiculos;
     private int numGuerreros;
 
-    public EdificioAyuntamiento(int madera, int oro, int porcentaje, int numConstructores, int numVehiculos, int numGuerreros) {
-        this.madera = madera;
-        this.oro = oro;
-        this.porcentaje = porcentaje;
-        this.numConstructores = numConstructores;
-        this.numVehiculos = numVehiculos;
-        this.numGuerreros = numGuerreros;
+    public EdificioAyuntamiento() {
+        madera = 1000;
+        oro = 1000;
+        porcentaje = 1500;
+        numConstructores = 1;
+        numVehiculos = 0;
+        numGuerreros = 0;
     }
 
     public int getMadera() {
