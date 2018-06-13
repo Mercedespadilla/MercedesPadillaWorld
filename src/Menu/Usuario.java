@@ -18,13 +18,14 @@ public class Usuario {
     ArrayList<EdificioRecolectorMadera> nMadera;
     ArrayList<EdificioRecolectorOro> nOro;
 
-    public Usuario(String jugador, String raza, ArrayList<EdificioBarraca> nBarracas, ArrayList<EdificioConstructor> nConstructor, ArrayList<EdificioRecolectorMadera> nMadera, ArrayList<EdificioRecolectorOro> nOro) {
+    public Usuario(String jugador, String raza) {
         this.jugador = jugador;
         this.raza = raza;
-        this.nBarracas = nBarracas;
-        this.nConstructor = nConstructor;
-        this.nMadera = nMadera;
-        this.nOro = nOro;
+        nBarracas = new ArrayList<>();
+        nConstructor = new ArrayList<>();
+        nMadera = new ArrayList<>();
+        nOro = new ArrayList<>();
+        
     }
 
     public String getJugador() {
