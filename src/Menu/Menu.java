@@ -126,7 +126,7 @@ public class Menu {
                         ayuntaU1.getNumGuerreros() + " guerreros\n" + 
                         ayuntaU1.getNumVehiculos() + " vehiculos\n");
                 
-                accionesJuego(ayuntaU1);
+                accionesJuego(ayuntaU1, ayuntaU2);
                 
                 turno = false;
                 
@@ -144,7 +144,7 @@ public class Menu {
                         ayuntaU2.getNumGuerreros() + " guerreros\n" + 
                         ayuntaU2.getNumVehiculos() + " vehiculos\n");
                 
-                accionesJuego(ayuntaU2);
+                accionesJuego(ayuntaU2, ayuntaU1);
                 
                 turno = true;
                 
@@ -155,7 +155,7 @@ public class Menu {
         
     }
 
-    private static void accionesJuego(EdificioAyuntamiento ayunta) {
+    private static void accionesJuego(EdificioAyuntamiento ayunta, EdificioAyuntamiento def) {
         System.out.println("1. Construir");
         System.out.println("2. Atacar");
         
@@ -168,7 +168,7 @@ public class Menu {
                     construirEdificio(ayunta);
                     break;
                 case 2:
-                    
+                    atacar(ayunta, def);
                     break;
             }
        
@@ -250,6 +250,17 @@ public class Menu {
         }
         }while(opc < 1 && opc > 6);
         
+    }
+
+    private static void atacar(EdificioAyuntamiento atacante, EdificioAyuntamiento defensor) {
+        
+        if(atacante.getNumGuerreros() > 0 || atacante.getNumVehiculos() > 0){
+            
+        }
+        else{
+            System.out.println("No tienes tropas o vehiculos de ataque");
+            accionesJuego(atacante, defensor);
+        }
     }
     
 }
