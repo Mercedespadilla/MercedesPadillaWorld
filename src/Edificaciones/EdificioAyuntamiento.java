@@ -56,8 +56,8 @@ public class EdificioAyuntamiento {
         return numConstructores;
     }
 
-    public void setNumConstructores(int numConstructores) {
-        this.numConstructores = numConstructores;
+    public void masUnConstructor() {
+        numConstructores = numConstructores+1 ;
     }
 
     public int getNumVehiculos() {

@@ -1,6 +1,7 @@
 package Menu;
 import Edificaciones.EdificioAyuntamiento;
 import Edificaciones.EdificioBarraca;
+import Edificaciones.EdificioConstructor;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -17,7 +18,7 @@ public class Menu {
     static int nBarrU1 = 0;
     static int nBarrU2 = 0;
     static EdificioBarraca barraca = new EdificioBarraca();
-    
+    static EdificioConstructor constructor = new EdificioConstructor();
     
     static Scanner teclado;
     
@@ -26,12 +27,10 @@ public class Menu {
         teclado = new Scanner(System.in);
         
         System.out.println("*** BIENVENIDOS AL HIMALAYA ***");
-        
+        System.out.println("***UN LUGAR ACOGEDOR***");
         menuInicio();
         menuJuego();
         iniciaJuego();
-        
-        
     }
     
     public static void menuInicio(){
@@ -193,7 +192,17 @@ public class Menu {
                     }
                      break;
                 case 2:
-                    return;
+                    if(ayunta.getMadera() > constructor.getPrecioMadera() && ayunta.getOro() > constructor.getPrecioOro()){
+                        ayunta.setMadera(ayunta.getMadera()-constructor.getPrecioMadera());
+                        ayunta.setOro(ayunta.getOro()-constructor.getPrecioOro());
+                        ayunta.masUnaBarraca();
+                        System.out.println("Madera: /n" + ayunta.getMadera() + "Oro: /n" + ayunta.getOro());
+                    }
+                    else{
+                        System.out.println("No tiene suficientes recursos");
+                        opc = 6;
+                    }
+                     break;
                 case 3:
                     return;
                 case 4:
