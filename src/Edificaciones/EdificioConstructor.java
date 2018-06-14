@@ -7,9 +7,8 @@ public class EdificioConstructor {
     private int precioOro;
     private int numConstrutores;
 
-    public EdificioConstructor(int numEdificaciones, int numConstrutores) {
-        this.numEdificaciones = numEdificaciones;
-        this.numConstrutores = numConstrutores;
+    public EdificioConstructor() {
+        numConstrutores = 1;
         porcentaje = 500;
         precioMadera = 1500;
         precioOro = 1500;

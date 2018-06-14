@@ -170,10 +170,10 @@ public class Menu {
 
     private static void construirEdificio(EdificioAyuntamiento ayunta) {
         System.out.println("1. Construir barraca (200 oro, 300 madera)");
-        System.out.println("2. Construir recolector de madera (200 oro)");
+        System.out.println("2. Construir casa de constructor (1500 oro, 1500 madera)");
         System.out.println("3. Construir recolector de oro (200 madera)");
         System.out.println("4. Construir taller (300 oro, 400 madera)");
-        System.out.println("5. Construir casa de constructor (1500 oro, 1500 madera)");
+        System.out.println("5. Construir recolector de madera (200 oro)1)");
         int opc;
         do{
             opc = teclado.nextInt();

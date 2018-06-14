@@ -17,8 +17,8 @@ public class EdificioAyuntamiento {
     
 
     public EdificioAyuntamiento() {
-        madera = 1000;
-        oro = 1000;
+        madera = 2000;
+        oro = 2000;
         porcentaje = 1500;
         numConstructores = 1;
         numVehiculos = 0;
