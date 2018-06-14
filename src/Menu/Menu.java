@@ -2,6 +2,7 @@ package Menu;
 import Edificaciones.EdificioAyuntamiento;
 import Edificaciones.EdificioBarraca;
 import Edificaciones.EdificioConstructor;
+import Edificaciones.EdificioTaller;
 import java.util.Scanner;
 import java.util.Set;
 
@@ -19,6 +20,7 @@ public class Menu {
     static int nBarrU2 = 0;
     static EdificioBarraca barraca = new EdificioBarraca();
     static EdificioConstructor constructor = new EdificioConstructor();
+    static EdificioTaller taller = new EdificioTaller();
     
     static Scanner teclado;
     
@@ -184,7 +186,7 @@ public class Menu {
                         ayunta.setMadera(ayunta.getMadera()-barraca.getPrecioMadera());
                         ayunta.setOro(ayunta.getOro()-barraca.getPrecioOro());
                         ayunta.masUnaBarraca();
-                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
+                        System.out.println("Madera: /n" + ayunta.getMadera() + "Oro: /n" + ayunta.getOro());
                     }
                     else{
                         System.out.println("No tiene suficientes recursos");
@@ -206,7 +208,17 @@ public class Menu {
                 case 3:
                     return;
                 case 4:
-                    return;
+                    if(ayunta.getMadera() > taller.getPrecioMadera() && ayunta.getOro() > taller.getPrecioOro()){
+                        ayunta.setMadera(ayunta.getMadera()-taller.getPrecioMadera());
+                        ayunta.setOro(ayunta.getOro()-taller.getPrecioOro());
+                        ayunta.masUnaBarraca();
+                        System.out.println("Madera: /n" + ayunta.getMadera() + "Oro: /n" + ayunta.getOro());
+                    }
+                    else{
+                        System.out.println("No tiene suficientes recursos");
+                        opc = 6;
+                    }
+                     break;
                 case 5:
                     return;
                 default:

@@ -9,7 +9,9 @@ public class EdificioAyuntamiento {
     private int oro;
     private int porcentaje;
     private int numConstructores;
+
     private int numBarracas;
+    private int numTaller;
     private int numRecOro;
     private int numRecMadera;
     private int numVehiculos;
@@ -18,6 +20,7 @@ public class EdificioAyuntamiento {
 
     public EdificioAyuntamiento() {
         madera = 2000;
+        numTaller= 0;
         oro = 2000;
         porcentaje = 1500;
         numConstructores = 1;
@@ -106,5 +109,12 @@ public class EdificioAyuntamiento {
     
     public void sumarMadera(int recolectorMadera){
         madera = madera + 100*(recolectorMadera+1);
+    }
+     public int getNumTaller() {
+        return numTaller;
+    }
+
+    public void masUnNumTaller(int numTaller) {
+        numTaller = numTaller + 1;
     }
 }

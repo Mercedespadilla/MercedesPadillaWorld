@@ -5,11 +5,29 @@ public class EdificioTaller {
     private int numEdificaciones;
     private int porcentaje;
     private int numVehiculo;
+    private int precioMadera;
 
-    public EdificioTaller(int numEdificaciones, int porcentaje, int numVehiculo) {
-        this.numEdificaciones = numEdificaciones;
+    public int getPrecioMadera() {
+        return precioMadera;
+    }
+
+    public void setPrecioMadera(int precioMadera) {
+        this.precioMadera = precioMadera;
+    }
+
+    public int getPrecioOro() {
+        return precioOro;
+    }
+
+    public void setPrecioOro(int precioOro) {
+        this.precioOro = precioOro;
+    }
+    private int precioOro;
+
+    public EdificioTaller() {
+        precioMadera= 400;
+        precioOro=300;
         porcentaje = 500;
-        this.numVehiculo = numVehiculo;
     }
 
     public int getNumEdificaciones() {
