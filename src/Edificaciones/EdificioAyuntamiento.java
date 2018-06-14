@@ -117,4 +117,12 @@ public class EdificioAyuntamiento {
     public void masUnNumTaller(int numTaller) {
         numTaller = numTaller + 1;
     }
+    
+    public void masUnRecMadera(){
+        numRecMadera = numRecMadera + 1;
+    }
+    
+    public void masUnRecOro(){
+        numRecOro = numRecOro + 1;
+    }
 }

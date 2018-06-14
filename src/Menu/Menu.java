@@ -2,6 +2,8 @@ package Menu;
 import Edificaciones.EdificioAyuntamiento;
 import Edificaciones.EdificioBarraca;
 import Edificaciones.EdificioConstructor;
+import Edificaciones.EdificioRecolectorMadera;
+import Edificaciones.EdificioRecolectorOro;
 import Edificaciones.EdificioTaller;
 import java.util.Scanner;
 import java.util.Set;
@@ -21,6 +23,8 @@ public class Menu {
     static EdificioBarraca barraca = new EdificioBarraca();
     static EdificioConstructor constructor = new EdificioConstructor();
     static EdificioTaller taller = new EdificioTaller();
+    static EdificioRecolectorMadera recMadera = new EdificioRecolectorMadera();
+    static EdificioRecolectorOro recOro = new EdificioRecolectorOro();
     
     static Scanner teclado;
     
@@ -48,8 +52,9 @@ public class Menu {
                 case 2:
                     System.exit(0);
                     break;
+                    
         }
-        }while(opc < 1 && opc > 3);
+        }while((opc < 1 && opc > 3));
     }
     
     public static Menu getInstance(){
@@ -110,7 +115,7 @@ public class Menu {
         EdificioAyuntamiento ayuntaU1 = new EdificioAyuntamiento();
         EdificioAyuntamiento ayuntaU2 = new EdificioAyuntamiento();
         
-        System.out.println("\nINICIA EL JUEGO");
+        System.out.println("\n***INICIA EL JUEGO***\n");
         
         while(validarGanador == false){
             if (turno){
@@ -175,7 +180,7 @@ public class Menu {
         System.out.println("2. Construir casa de constructor (1500 oro, 1500 madera)");
         System.out.println("3. Construir recolector de oro (200 madera)");
         System.out.println("4. Construir taller (300 oro, 400 madera)");
-        System.out.println("5. Construir recolector de madera (200 oro)1)");
+        System.out.println("5. Construir recolector de madera (200 oro))");
         int opc;
         do{
             opc = teclado.nextInt();
@@ -186,7 +191,7 @@ public class Menu {
                         ayunta.setMadera(ayunta.getMadera()-barraca.getPrecioMadera());
                         ayunta.setOro(ayunta.getOro()-barraca.getPrecioOro());
                         ayunta.masUnaBarraca();
-                        System.out.println("Madera: /n" + ayunta.getMadera() + "Oro: /n" + ayunta.getOro());
+                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
                     }
                     else{
                         System.out.println("No tiene suficientes recursos");
@@ -194,11 +199,12 @@ public class Menu {
                     }
                      break;
                 case 2:
-                    if(ayunta.getMadera() > constructor.getPrecioMadera() && ayunta.getOro() > constructor.getPrecioOro()){
+                    if(ayunta.getMadera() > constructor.getPrecioMadera() && 
+                       ayunta.getOro() > constructor.getPrecioOro()){
                         ayunta.setMadera(ayunta.getMadera()-constructor.getPrecioMadera());
                         ayunta.setOro(ayunta.getOro()-constructor.getPrecioOro());
                         ayunta.masUnaBarraca();
-                        System.out.println("Madera: /n" + ayunta.getMadera() + "Oro: /n" + ayunta.getOro());
+                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
                     }
                     else{
                         System.out.println("No tiene suficientes recursos");
@@ -206,13 +212,22 @@ public class Menu {
                     }
                      break;
                 case 3:
-                    return;
+                    if(ayunta.getMadera() > recOro.getPrecioMadera()){
+                        ayunta.setMadera(ayunta.getMadera()-recOro.getPrecioMadera());
+                        ayunta.masUnRecOro();
+                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
+                    }
+                    else{
+                        System.out.println("No tiene suficientes recursos");
+                        opc = 6;
+                    }
+                    break;
                 case 4:
                     if(ayunta.getMadera() > taller.getPrecioMadera() && ayunta.getOro() > taller.getPrecioOro()){
                         ayunta.setMadera(ayunta.getMadera()-taller.getPrecioMadera());
                         ayunta.setOro(ayunta.getOro()-taller.getPrecioOro());
                         ayunta.masUnaBarraca();
-                        System.out.println("Madera: /n" + ayunta.getMadera() + "Oro: /n" + ayunta.getOro());
+                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
                     }
                     else{
                         System.out.println("No tiene suficientes recursos");
@@ -220,11 +235,20 @@ public class Menu {
                     }
                      break;
                 case 5:
-                    return;
+                    if(ayunta.getOro()> recMadera.getPrecioOro()){
+                        ayunta.setOro(ayunta.getOro()-recMadera.getPrecioOro());
+                        ayunta.masUnRecMadera();
+                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
+                    }
+                    else{
+                        System.out.println("No tiene suficientes recursos");
+                        opc = 6;
+                    }
+                    break;
                 default:
                     break;
         }
-        }while(opc < 1 && opc > 7);
+        }while(opc < 1 && opc > 6);
         
     }
     
