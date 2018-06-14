@@ -124,6 +124,8 @@ public class Menu {
                 
                 turno = false;
                 
+                ayuntaU1.sumarMadera(ayuntaU1.getNumRecMadera());
+                ayuntaU1.sumarOro(ayuntaU1.getNumRecOro());
                 
                 
             }
@@ -139,6 +141,9 @@ public class Menu {
                 accionesJuego(ayuntaU2);
                 
                 turno = true;
+                
+                ayuntaU2.sumarMadera(ayuntaU2.getNumRecMadera());
+                ayuntaU2.sumarOro(ayuntaU2.getNumRecOro());
             }
         }
         
