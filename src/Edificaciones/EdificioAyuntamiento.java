@@ -1,14 +1,20 @@
 
 package Edificaciones;
 
+import java.util.ArrayList;
+
 public class EdificioAyuntamiento {
     
     private int madera;
     private int oro;
     private int porcentaje;
     private int numConstructores;
+    private int numBarracas;
+    private int numRecOro;
+    private int numRecMadera;
     private int numVehiculos;
     private int numGuerreros;
+    
 
     public EdificioAyuntamiento() {
         madera = 1000;
@@ -17,6 +23,9 @@ public class EdificioAyuntamiento {
         numConstructores = 1;
         numVehiculos = 0;
         numGuerreros = 0;
+        numBarracas = 0;
+        numRecMadera = 0;
+        numRecOro = 0;
     }
 
     public int getMadera() {
@@ -66,6 +75,36 @@ public class EdificioAyuntamiento {
     public void setNumGuerreros(int numGuerreros) {
         this.numGuerreros = numGuerreros;
     }
+
+    public int getNumBarracas() {
+        return numBarracas;
+    }
+
+    public void masUnaBarraca() {
+        numBarracas = numBarracas+1 ;
+    }
+
+    public int getNumRecOro() {
+        return numRecOro;
+    }
+
+    public void setNumRecOro(int numRecOro) {
+        this.numRecOro = numRecOro;
+    }
+
+    public int getNumRecMadera() {
+        return numRecMadera;
+    }
+
+    public void setNumRecMadera(int numRecMadera) {
+        this.numRecMadera = numRecMadera;
+    }
     
+    public void sumarOro(int recolectorOro){
+        oro = oro + 100*(recolectorOro+1);
+    }
     
+    public void sumarMadera(int recolectorMadera){
+        madera = madera + 100*(recolectorMadera+1);
+    }
 }

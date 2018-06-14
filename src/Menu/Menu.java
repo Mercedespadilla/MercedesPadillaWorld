@@ -1,18 +1,12 @@
 package Menu;
 import Edificaciones.EdificioAyuntamiento;
+import Edificaciones.EdificioBarraca;
 import java.util.Scanner;
+import java.util.Set;
 
-/**
- *
- * @author padilla
- */
 public class Menu {
     public static Menu menu;
 
-    /**
-     * @param args the command line arguments
-     */
-    
     static String nomUser;
     static String raza;
     static Usuario u1;
@@ -20,6 +14,10 @@ public class Menu {
     static boolean validarGanador = false;
     static boolean turno = true;
     static boolean atacar = false;
+    static int nBarrU1 = 0;
+    static int nBarrU2 = 0;
+    static EdificioBarraca barraca = new EdificioBarraca();
+    
     
     static Scanner teclado;
     
@@ -122,9 +120,12 @@ public class Menu {
                         ayuntaU1.getNumGuerreros() + " guerreros\n" + 
                         ayuntaU1.getNumVehiculos() + " vehiculos\n");
                 
-                accionesJuego();
+                accionesJuego(ayuntaU1);
                 
                 turno = false;
+                
+                
+                
             }
             else{
                 
@@ -135,7 +136,7 @@ public class Menu {
                         ayuntaU2.getNumGuerreros() + " guerreros\n" + 
                         ayuntaU2.getNumVehiculos() + " vehiculos\n");
                 
-                
+                accionesJuego(ayuntaU2);
                 
                 turno = true;
             }
@@ -143,7 +144,7 @@ public class Menu {
         
     }
 
-    private static void accionesJuego() {
+    private static void accionesJuego(EdificioAyuntamiento ayunta) {
         System.out.println("1. Construir");
         System.out.println("2. Atacar");
         
@@ -153,7 +154,7 @@ public class Menu {
             teclado.nextLine();
             switch(opc){
                 case 1:
-                    construirEdificio();
+                    construirEdificio(ayunta);
                     break;
                 case 2:
                     
@@ -163,13 +164,41 @@ public class Menu {
         }while(opc < 1 && opc > 3);
     }
 
-    private static void construirEdificio() {
+    private static void construirEdificio(EdificioAyuntamiento ayunta) {
         System.out.println("1. Construir barraca (200 oro, 300 madera)");
         System.out.println("2. Construir recolector de madera (200 oro)");
         System.out.println("3. Construir recolector de oro (200 madera)");
         System.out.println("4. Construir taller (300 oro, 400 madera)");
         System.out.println("5. Construir casa de constructor (1500 oro, 1500 madera)");
-        
+        int opc;
+        do{
+            opc = teclado.nextInt();
+            teclado.nextLine();
+            switch(opc){
+                case 1:
+                    if(ayunta.getMadera() > barraca.getPrecioMadera() && ayunta.getOro() > barraca.getPrecioOro()){
+                        ayunta.setMadera(ayunta.getMadera()-barraca.getPrecioMadera());
+                        ayunta.setOro(ayunta.getOro()-barraca.getPrecioOro());
+                        ayunta.masUnaBarraca();
+                        System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
+                    }
+                    else{
+                        System.out.println("No tiene suficientes recursos");
+                        opc = 6;
+                    }
+                     break;
+                case 2:
+                    return;
+                case 3:
+                    return;
+                case 4:
+                    return;
+                case 5:
+                    return;
+                default:
+                    break;
+        }
+        }while(opc < 1 && opc > 7);
         
     }
     
