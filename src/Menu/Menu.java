@@ -195,7 +195,7 @@ public class Menu {
                     crearMilicia(ayunta, def);
             }
        
-        }while(opc < 1 && opc > 3);
+        }while(opc < 1 && opc > 4);
     }
 
     private static void construirEdificio(EdificioAyuntamiento ayunta) {
@@ -249,7 +249,7 @@ public class Menu {
                     if(ayunta.getMadera() > taller.getPrecioMadera() && ayunta.getOro() > taller.getPrecioOro()){
                         ayunta.setMadera(ayunta.getMadera()-taller.getPrecioMadera());
                         ayunta.setOro(ayunta.getOro()-taller.getPrecioOro());
-                        ayunta.masUnaBarraca();
+                        ayunta.masUnNumTaller();
                         System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
                     }
                     else{

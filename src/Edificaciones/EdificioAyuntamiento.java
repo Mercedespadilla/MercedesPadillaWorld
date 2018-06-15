@@ -121,7 +121,7 @@ public class EdificioAyuntamiento {
         return numTaller;
     }
 
-    public void masUnNumTaller(int numTaller) {
+    public void masUnNumTaller() {
         numTaller = numTaller + 1;
     }
     
