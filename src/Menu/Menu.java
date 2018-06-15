@@ -284,6 +284,7 @@ public class Menu {
         
         int opc;
         do{
+            // raza 
             opc = teclado.nextInt();
             switch(opc){
                 case 1:
@@ -332,7 +333,7 @@ public class Menu {
                     ayunta.setBallesta();
                     }
                     else{
-                        System.out.println("Madera insuficiente para crear soldados");
+                        System.out.println("Madera insuficiente para crear ballesta");
                     }
                     
                     break;
@@ -343,7 +344,7 @@ public class Menu {
                             ayunta.setTanque();
                         }
                         else{
-                            System.out.println("Madera insuficiente para crear soldados");
+                            System.out.println("Madera insuficiente para crear tanque");
                             opc = 3;
                         }
                     break;
@@ -353,5 +354,5 @@ public class Menu {
         }while(opc > 0 && opc < 4);
         
     }
-    
+    //preguntar que raza es soldados 
 }
