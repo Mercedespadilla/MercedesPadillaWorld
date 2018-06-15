@@ -9,9 +9,11 @@ import java.util.Scanner;
 import java.util.Set;
 import reinos.CriaturasMagicas.Criaturaguerrera;
 import reinos.CriaturasMagicas.SuperSoldadoCriatura;
+import reinos.Elfos.BallestaElfos;
+import reinos.Elfos.Elfosguerreros;
+import reinos.Elfos.TanqueElfos;
 import reinos.Hechizeros.BallestaHechizero;
 import reinos.Hechizeros.TanqueHechizero;
-import sun.rmi.runtime.RuntimeUtil;
 
 public class Menu {
     public static Menu menu;
@@ -31,9 +33,13 @@ public class Menu {
     static EdificioRecolectorMadera recMadera = new EdificioRecolectorMadera();
     static EdificioRecolectorOro recOro = new EdificioRecolectorOro();
     static Criaturaguerrera guerrero = new Criaturaguerrera();
+    static Elfosguerreros simpleGuerrero = new Elfosguerreros();
+    static BallestaElfos simpleBallesta = new BallestaElfos();
+    static TanqueElfos simpleTanque = new TanqueElfos();
     static SuperSoldadoCriatura superSoldado = new SuperSoldadoCriatura();
     static BallestaHechizero ballesta = new BallestaHechizero();
     static TanqueHechizero tanque = new TanqueHechizero();
+    
     
     static Scanner teclado;
     
@@ -138,7 +144,6 @@ public class Menu {
                         ayuntaU1.getNumBarracas() + " barracas\n" +
                         ayuntaU1.getNumTaller() + " talleres\n" +
                         ayuntaU1.getNumGuerreros() + " guerreros\n" + 
-                        ayuntaU1.getNumVehiculos() + " vehiculos\n" +
                         ayuntaU1.getSuperSoldado() + " super soldado\n" +
                         ayuntaU1.getBallesta() + " ballesta\n" + 
                         ayuntaU1.getTanque() + " tanque\n");
@@ -153,12 +158,16 @@ public class Menu {
                 
             }
             else{
-                System.out.println(u2.getJugador() + " tienes: \n" +
+                System.out.println(u1.getJugador() + " tienes: \n" +
                         ayuntaU2.getMadera() + " madera\n" +
                         ayuntaU2.getOro() + " oro\n" + 
                         ayuntaU2.getNumConstructores() + " constructores\n" +
+                        ayuntaU2.getNumBarracas() + " barracas\n" +
+                        ayuntaU2.getNumTaller() + " talleres\n" +
                         ayuntaU2.getNumGuerreros() + " guerreros\n" + 
-                        ayuntaU2.getNumVehiculos() + " vehiculos\n");
+                        ayuntaU2.getSuperSoldado() + " super soldado\n" +
+                        ayuntaU2.getBallesta() + " ballesta\n" + 
+                        ayuntaU2.getTanque() + " tanque\n");
                 
                 accionesJuego(ayuntaU2, ayuntaU1);
                 
@@ -275,14 +284,216 @@ public class Menu {
         
     }
 
-    private static void atacar(EdificioAyuntamiento atacante, EdificioAyuntamiento defensor) {
+    private static void atacar(EdificioAyuntamiento atacante, EdificioAyuntamiento def) {
         
-        if(atacante.getNumGuerreros() > 0 || atacante.getNumVehiculos() > 0){
+        if(atacante.getNumGuerreros() > 0 || atacante.getBallesta()> 0  || atacante.getTanque() > 0){
+          
+            System.out.println("El oponente tiene: \n" +
+                        "1) " + def.getNumRecMadera() + " madera\n" +
+                        "2) " + def.getNumRecOro() + " oro\n" + 
+                        "3) " + def.getNumConstructores() + " constructores\n" +
+                        "4) " + def.getNumBarracas() + " barracas\n" +
+                        "5) " + def.getNumTaller() + " talleres\n" +
+                        "6) ayuntamiento");
+            
+            int opc;
+            do{
+               opc = teclado.nextInt();
+               teclado.nextLine();
+               
+                if(atacante.getRaza() == "Criatura Magica"){
+                   if(opc == 1 && def.getNumRecMadera() > 0){
+                        if(((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura()) +
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > recMadera.getPorcentaje()){
+                            def.menosRecMadera();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 2 && def.getNumRecOro()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > recOro.getPorcentaje()){
+                            def.menosRecOro();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 2 && def.getNumRecOro()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > recOro.getPorcentaje()){
+                            def.menosRecOro();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 3 && def.getNumConstructores() > 0){
+                        if(
+                            ((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > constructor.getPorcentaje()){
+                            def.menosConstructor();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 4 && def.getNumBarracas()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > barraca.getPorcentaje()){
+                            def.menosBarraca();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 5 && def.getNumTaller()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura()) +
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > taller.getPorcentaje()){
+                            def.menosTaller();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 6 && def.getNumTaller()> 0 && 
+                      (def.getNumBarracas() == 0 && def.getNumConstructores() == 0 && def.getNumRecMadera() == 0 &&
+                       def.getNumRecOro() == 0 && def.getNumTaller() == 0)){
+                        if(
+                            ((atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura()) +
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > taller.getPorcentaje()){
+                            
+                            int ataqueTotal = (atacante.getNumGuerreros()*guerrero.getPuntosAtkCriatura()) +
+                                              (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                                              (atacante.getTanque()*simpleTanque.getAtaque());
+                            
+                            def.setPorcentaje(def.getPorcentaje()-ataqueTotal);
+                            
+                            //Aqui valida ganador
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                }
+                else{
+                    if(opc == 1 && def.getNumRecMadera() > 0){
+                        if(((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos()) +
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > recMadera.getPorcentaje()){
+                            def.menosRecMadera();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 2 && def.getNumRecOro()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > recOro.getPorcentaje()){
+                            def.menosRecOro();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 2 && def.getNumRecOro()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > recOro.getPorcentaje()){
+                            def.menosRecOro();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 3 && def.getNumConstructores() > 0){
+                        if(
+                            ((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > constructor.getPorcentaje()){
+                            def.menosConstructor();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 4 && def.getNumBarracas()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos())+
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > barraca.getPorcentaje()){
+                            def.menosBarraca();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 5 && def.getNumTaller()> 0){
+                        if(
+                            ((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos()) +
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > taller.getPorcentaje()){
+                            def.menosTaller();
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+                    
+                    if(opc == 6 && def.getNumTaller()> 0 && 
+                      (def.getNumBarracas() == 0 && def.getNumConstructores() == 0 && def.getNumRecMadera() == 0 &&
+                       def.getNumRecOro() == 0 && def.getNumTaller() == 0)){
+                        if(
+                            ((atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos()) +
+                            (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                            (atacante.getTanque()*simpleTanque.getAtaque())) > taller.getPorcentaje()){
+                            
+                            int ataqueTotal = (atacante.getNumGuerreros()*simpleGuerrero.getPuntosAtkElfos()) +
+                                              (atacante.getBallesta()*simpleBallesta.getAtaque()) + 
+                                              (atacante.getTanque()*simpleTanque.getAtaque());
+                            
+                            def.setPorcentaje(def.getPorcentaje()-ataqueTotal);
+                            
+                            //Aqui valida ganador
+                        }
+                    }
+                    else{
+                        System.out.println("Ataque insuficiente para derribar la construccion.");
+                    }
+               }
+   
+            }while(opc < 1 && opc > 7);
             
         }
         else{
             System.out.println("No tienes tropas o vehiculos de ataque");
-            accionesJuego(atacante, defensor);
+            accionesJuego(atacante, def);
         }
     }
 
@@ -345,6 +556,18 @@ public class Menu {
         int opc;
         do{
             opc = teclado.nextInt();
+            switch(opc){
+                case 1:
+                    if(ayunta.getMadera() > ballesta.getCosto()){
+                    ayunta.setOro(ayunta.getMadera()- ballesta.getCosto());
+                    ayunta.setBallesta();
+                    }
+                    else{
+                        System.out.println("Madera insuficiente para crear ballesta");
+                    }
+                    
+                    break;
+                case 2:
                 switch(opc){
                     case 1:
                         if(ayunta.getMadera() > ballesta.getCosto()){
@@ -371,9 +594,7 @@ public class Menu {
                         System.out.println("es incorrecto");
                         break;
                 }
-            }
-            while(opc > 0 && opc < 4);
-        
+            }   
+        }while(opc > 0 && opc < 4);
     }
-    //preguntar que raza es soldados 
 }

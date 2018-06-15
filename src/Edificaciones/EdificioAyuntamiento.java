@@ -1,4 +1,3 @@
-
 package Edificaciones;
 
 import java.util.ArrayList;
@@ -66,10 +65,6 @@ public class EdificioAyuntamiento {
         return numConstructores;
     }
 
-    public void masUnConstructor() {
-        numConstructores = numConstructores+1 ;
-    }
-
     public int getNumVehiculos() {
         return numVehiculos;
     }
@@ -82,16 +77,8 @@ public class EdificioAyuntamiento {
         return numGuerreros;
     }
 
-    public void setNumGuerreros() {
-        numGuerreros = numGuerreros+5;
-    }
-
     public int getNumBarracas() {
         return numBarracas;
-    }
-
-    public void masUnaBarraca() {
-        numBarracas = numBarracas+1 ;
     }
 
     public int getNumRecOro() {
@@ -109,6 +96,32 @@ public class EdificioAyuntamiento {
     public void setNumRecMadera(int numRecMadera) {
         this.numRecMadera = numRecMadera;
     }
+  
+    public int getNumTaller() {
+        return numTaller;
+    }
+
+    public int getSuperSoldado() {
+        return superSoldado;
+    }
+
+    public int getBallesta() {
+        return ballesta;
+    }
+
+    public int getTanque() {
+        return tanque;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+     
+    public void setRaza(String raza) {
+        this.raza = raza;
+    }
+    
+    //Sumando recursos
     
     public void sumarOro(int recolectorOro){
         oro = oro + 100*(recolectorOro+1);
@@ -117,30 +130,37 @@ public class EdificioAyuntamiento {
     public void sumarMadera(int recolectorMadera){
         madera = madera + 100*(recolectorMadera+1);
     }
-     public int getNumTaller() {
-        return numTaller;
-    }
+     
 
     public void masUnNumTaller() {
         numTaller = numTaller + 1;
     }
+    //Fin de sumar recursos
     
-    public void masUnRecMadera(){
-        numRecMadera = numRecMadera + 1;
+    //Fin sumando recursos
+    
+    //Poniendo tropas
+    
+    public void setNumGuerreros(){
+        numGuerreros = numGuerreros+5;
     }
     
-    public void masUnRecOro(){
-        numRecOro = numRecOro + 1;
-    }
-
-    public int getSuperSoldado() {
-        return superSoldado;
-    }
-
     public void setSuperSoldado() {
         superSoldado = superSoldado+1;
     }
     
+    public void setTanque() {
+        tanque = tanque+1;
+    }
+    
+    public void setBallesta() {
+        ballesta = ballesta + 1;
+    }
+    
+    //Fin poniendo tropas
+    
+    
+    //Quitando tropas
     public void quitarSuperSoldado() {
         superSoldado = superSoldado-1;
     }
@@ -152,29 +172,48 @@ public class EdificioAyuntamiento {
     public void quitarGuerrerosC() {
         numGuerreros = numGuerreros-10;
     }
-
-    public int getBallesta() {
-        return ballesta;
-    }
-
-    public void setBallesta() {
-        ballesta = ballesta + 1;
-    }
-
-    public int getTanque() {
-        return tanque;
-    }
-
-    public void setTanque() {
-        tanque = tanque+1;
-    }
-
-    public String getRaza() {
-        return raza;
-    }
-
-    public void setRaza(String raza) {
-        this.raza = raza;
+    //fin de quitar tropas
+    
+    //sumando a construcciones
+    
+    public void masUnConstructor() {
+        numConstructores = numConstructores+1;
     }
     
+    public void masUnaBarraca() {
+        numBarracas = numBarracas+1;
+    }
+    
+     public void masUnNumTaller(int numTaller) {
+        numTaller = numTaller + 1;
+    }
+    
+    public void masUnRecMadera(){
+        numRecMadera = numRecMadera + 1;
+    }
+    
+    public void masUnRecOro(){
+        numRecOro = numRecOro + 1;
+    }
+    //fin sumando construcciones
+
+    //Quitar Construcciones
+    public void menosRecMadera(){
+        numRecMadera = numRecMadera-1;
+    }
+    
+    public void menosRecOro(){
+        numRecOro = numRecOro-1;
+    }
+    
+    public void menosBarraca(){
+        numBarracas = numBarracas-1;
+    }
+    public void menosConstructor(){
+        numConstructores = numConstructores-1;
+    }
+    public void menosTaller(){
+        numTaller = numTaller-1;
+    }
+    //Fin quitar construcciones
 }
