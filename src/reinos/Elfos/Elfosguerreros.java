@@ -15,10 +15,10 @@ public class Elfosguerreros {
     private int numtropas;
     //constructor
 
-    public Elfosguerreros(int puntosAtkElfos, int puntosvida, int numtropas) {
-        this.puntosAtkElfos = puntosAtkElfos;
-        this.puntosvida = puntosvida;
-        this.numtropas = numtropas;
+    public Elfosguerreros() {
+        puntosAtkElfos = 50;
+        puntosvida = 50;
+        numtropas = 5;
     }
     // set y get
 

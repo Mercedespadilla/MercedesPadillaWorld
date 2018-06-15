@@ -15,10 +15,10 @@ public class SuperSoldadoCriatura {
     private int costo;
     // constructor
 
-    public SuperSoldadoCriatura(int vida, int ataque, int costo) {
+    public SuperSoldadoCriatura() {
         vida = 200;
         ataque = 600;
-        costo = 80;
+        costo = 100;
     }
 
     public void setVida(int vida) {
@@ -32,5 +32,19 @@ public class SuperSoldadoCriatura {
     public void setCosto(int costo) {
         this.costo = costo;
     }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public int getAtaque() {
+        return ataque;
+    }
+
+    public int getCosto() {
+        return costo;
+    }
+    
+    
     
 }

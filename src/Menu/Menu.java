@@ -7,6 +7,10 @@ import Edificaciones.EdificioRecolectorOro;
 import Edificaciones.EdificioTaller;
 import java.util.Scanner;
 import java.util.Set;
+import reinos.CriaturasMagicas.Criaturaguerrera;
+import reinos.CriaturasMagicas.SuperSoldadoCriatura;
+import reinos.Hechizeros.BallestaHechizero;
+import reinos.Hechizeros.TanqueHechizero;
 
 public class Menu {
     public static Menu menu;
@@ -25,6 +29,10 @@ public class Menu {
     static EdificioTaller taller = new EdificioTaller();
     static EdificioRecolectorMadera recMadera = new EdificioRecolectorMadera();
     static EdificioRecolectorOro recOro = new EdificioRecolectorOro();
+    static Criaturaguerrera guerrero = new Criaturaguerrera();
+    static SuperSoldadoCriatura superSoldado = new SuperSoldadoCriatura();
+    static BallestaHechizero ballesta = new BallestaHechizero();
+    static TanqueHechizero tanque = new TanqueHechizero();
     
     static Scanner teclado;
     
@@ -136,7 +144,6 @@ public class Menu {
                 
             }
             else{
-                
                 System.out.println(u2.getJugador() + " tienes: \n" +
                         ayuntaU2.getMadera() + " madera\n" +
                         ayuntaU2.getOro() + " oro\n" + 
@@ -158,6 +165,8 @@ public class Menu {
     private static void accionesJuego(EdificioAyuntamiento ayunta, EdificioAyuntamiento def) {
         System.out.println("1. Construir");
         System.out.println("2. Atacar");
+        System.out.println("3. Crear Soldados");
+        System.out.println("4. Crear Milicia");
         
         int opc;
         do{
@@ -170,6 +179,11 @@ public class Menu {
                 case 2:
                     atacar(ayunta, def);
                     break;
+                case 3:
+                    crearSoldados(ayunta, def);
+                    break;
+                case 4:
+                    crearMilicia(ayunta, def);
             }
        
         }while(opc < 1 && opc > 3);
@@ -261,6 +275,83 @@ public class Menu {
             System.out.println("No tienes tropas o vehiculos de ataque");
             accionesJuego(atacante, defensor);
         }
+    }
+
+    private static void crearSoldados(EdificioAyuntamiento ayunta, EdificioAyuntamiento def) {
+        System.out.println("Que soldado quieres crear?");
+        System.out.println("1. Escuadron");
+        System.out.println("2. SuperSoldado");
+        
+        int opc;
+        do{
+            opc = teclado.nextInt();
+            switch(opc){
+                case 1:
+                    if(ayunta.getOro() > guerrero.getCosto()){
+                    ayunta.setOro(ayunta.getOro() - guerrero.getCosto());
+                    ayunta.setNumGuerreros();
+                    }
+                    else{
+                        System.out.println("Oro insuficiente para crear soldados");
+                    }
+                    
+                    break;
+                case 2:
+                    if(ayunta.getSuperSoldado() == 1){
+                        System.out.println("Ya tienes un super soldado");
+                        opc = 3;
+                    }
+                    else{
+                        if(ayunta.getOro() > superSoldado.getCosto()){
+                            ayunta.setOro(ayunta.getOro() - superSoldado.getCosto());
+                            ayunta.setSuperSoldado();
+                        }
+                        else{
+                            System.out.println("Oro insuficiente para crear soldados");
+                        }
+                    break;
+                    }
+                    default:
+                    break;
+            }
+        }while(opc > 0 && opc < 4);
+    }
+
+    private static void crearMilicia(EdificioAyuntamiento ayunta, EdificioAyuntamiento def) {
+        System.out.println("Que Vehiculo quieres crear?");
+        System.out.println("1. Ballesta");
+        System.out.println("2. Tanque");
+        
+        int opc;
+        do{
+            opc = teclado.nextInt();
+            switch(opc){
+                case 1:
+                    if(ayunta.getMadera() > ballesta.getCosto()){
+                    ayunta.setOro(ayunta.getMadera()- ballesta.getCosto());
+                    ayunta.setBallesta();
+                    }
+                    else{
+                        System.out.println("Madera insuficiente para crear soldados");
+                    }
+                    
+                    break;
+                case 2:
+                    
+                        if(ayunta.getMadera()> tanque.getCosto()){
+                            ayunta.setOro(ayunta.getMadera()- tanque.getCosto());
+                            ayunta.setTanque();
+                        }
+                        else{
+                            System.out.println("Madera insuficiente para crear soldados");
+                            opc = 3;
+                        }
+                    break;
+                    default:
+                    break;
+            }
+        }while(opc > 0 && opc < 4);
+        
     }
     
 }

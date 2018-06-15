@@ -14,10 +14,10 @@ public class Hechizerosguerreros {
     private int puntosvida;
     private int numtropas;
 
-    public Hechizerosguerreros(int puntosAtkHechizeros, int puntosvida, int numtropas) {
-        this.puntosAtkHechizeros = puntosAtkHechizeros;
-        this.puntosvida = puntosvida;
-        this.numtropas = numtropas;
+    public Hechizerosguerreros() {
+        puntosAtkHechizeros = 50;
+        puntosvida = 50;
+        numtropas = 5;
     }
 
     public int getPuntosAtkHechizeros() {

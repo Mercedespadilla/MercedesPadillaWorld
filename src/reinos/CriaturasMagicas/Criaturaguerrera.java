@@ -13,11 +13,14 @@ public class Criaturaguerrera {
     private int puntosAtkCriatura;
     private int puntosvida;
     private int numtropas;
+    private int costo;
+    
     //constructores
-    public Criaturaguerrera(int puntosAtkCriatura, String tipovehiculo, int puntosvida, int numtropas) {
+    public Criaturaguerrera() {
         puntosAtkCriatura = 100;
-        this.puntosvida = puntosvida;
-        this.numtropas = numtropas;
+        puntosvida = 50;
+        numtropas = 5;
+        costo = 50;
     }
     
     //set y get
@@ -45,5 +48,14 @@ public class Criaturaguerrera {
     public void setNumtropas(int numtropas) {
         this.numtropas = numtropas;
     }
+
+    public int getCosto() {
+        return costo;
+    }
+
+    public void setCosto(int costo) {
+        this.costo = costo;
+    }
+    
     
 }

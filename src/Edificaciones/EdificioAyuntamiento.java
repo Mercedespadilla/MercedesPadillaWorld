@@ -16,7 +16,9 @@ public class EdificioAyuntamiento {
     private int numRecMadera;
     private int numVehiculos;
     private int numGuerreros;
-    
+    private int superSoldado;
+    private int ballesta;
+    private int tanque;
 
     public EdificioAyuntamiento() {
         madera = 2000;
@@ -29,6 +31,9 @@ public class EdificioAyuntamiento {
         numBarracas = 0;
         numRecMadera = 0;
         numRecOro = 0;
+        superSoldado = 0;
+        ballesta = 0;
+        tanque = 0;
     }
 
     public int getMadera() {
@@ -75,8 +80,8 @@ public class EdificioAyuntamiento {
         return numGuerreros;
     }
 
-    public void setNumGuerreros(int numGuerreros) {
-        this.numGuerreros = numGuerreros;
+    public void setNumGuerreros() {
+        numGuerreros = numGuerreros+5;
     }
 
     public int getNumBarracas() {
@@ -125,4 +130,41 @@ public class EdificioAyuntamiento {
     public void masUnRecOro(){
         numRecOro = numRecOro + 1;
     }
+
+    public int getSuperSoldado() {
+        return superSoldado;
+    }
+
+    public void setSuperSoldado() {
+        superSoldado = superSoldado+1;
+    }
+    
+    public void quitarSuperSoldado() {
+        superSoldado = superSoldado-1;
+    }
+    
+    public void quitarGuerrerosEH() {
+        numGuerreros = numGuerreros-5;
+    }
+    
+    public void quitarGuerrerosC() {
+        numGuerreros = numGuerreros-10;
+    }
+
+    public int getBallesta() {
+        return ballesta;
+    }
+
+    public void setBallesta() {
+        ballesta = ballesta + 1;
+    }
+
+    public int getTanque() {
+        return tanque;
+    }
+
+    public void setTanque() {
+        tanque = tanque+1;
+    }
+    
 }
