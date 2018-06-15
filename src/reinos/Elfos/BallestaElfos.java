@@ -11,9 +11,9 @@ public class BallestaElfos {
     private int ataque;
     private int costo;
 
-    public BallestaElfos(int ataque) {
+    public BallestaElfos() {
         vida = 50;
-        this.ataque = 500+ataque;
+        ataque = 500;
         costo = 80;
     }
 

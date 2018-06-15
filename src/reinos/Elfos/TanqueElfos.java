@@ -6,9 +6,9 @@ public class TanqueElfos {
     private int ataque;
     private int costo;
 
-    public TanqueElfos(int ataque) {
+    public TanqueElfos() {
         vida = 150;
-        this.ataque = 550+ataque;
+        ataque = 550;
         costo = 100;
     }
 

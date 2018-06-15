@@ -6,9 +6,9 @@ public class TanqueHechizero {
     private int ataque;
     private int costo;
 
-    public TanqueHechizero(int ataque) {
+    public TanqueHechizero() {
         vida = 150;
-        this.ataque = 550+ataque;
+        ataque = 700;
         costo = 100;
     }
 

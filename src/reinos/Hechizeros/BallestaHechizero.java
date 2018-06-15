@@ -6,9 +6,9 @@ public class BallestaHechizero {
     private int ataque;
     private int costo;
 
-    public BallestaHechizero(int ataque) {
+    public BallestaHechizero() {
         vida = 50;
-        this.ataque = 500+ataque;
+        ataque = 700;
         costo = 80;
     }
 

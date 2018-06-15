@@ -10,9 +10,9 @@ public class BallestaCriatura {
     private int ataque;
     private int costo;
 
-    public BallestaCriatura(int ataque) {
+    public BallestaCriatura() {
         vida = 50;
-        this.ataque = 500+ataque;
+        ataque = 500;
         costo = 80;
     }
 
