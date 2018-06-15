@@ -11,6 +11,7 @@ import reinos.CriaturasMagicas.Criaturaguerrera;
 import reinos.CriaturasMagicas.SuperSoldadoCriatura;
 import reinos.Hechizeros.BallestaHechizero;
 import reinos.Hechizeros.TanqueHechizero;
+import sun.rmi.runtime.RuntimeUtil;
 
 public class Menu {
     public static Menu menu;
@@ -133,8 +134,13 @@ public class Menu {
                         ayuntaU1.getMadera() + " madera\n" +
                         ayuntaU1.getOro() + " oro\n" + 
                         ayuntaU1.getNumConstructores() + " constructores\n" +
+                        ayuntaU1.getNumBarracas() + " barracas\n" +
+                        ayuntaU1.getNumTaller() + " talleres\n" +
                         ayuntaU1.getNumGuerreros() + " guerreros\n" + 
-                        ayuntaU1.getNumVehiculos() + " vehiculos\n");
+                        ayuntaU1.getNumVehiculos() + " vehiculos\n" +
+                        ayuntaU1.getSuperSoldado() + " super soldado\n" +
+                        ayuntaU1.getBallesta() + " ballesta\n" + 
+                        ayuntaU1.getTanque() + " tanque");
                 
                 accionesJuego(ayuntaU1, ayuntaU2);
                 
@@ -219,7 +225,7 @@ public class Menu {
                        ayunta.getOro() > constructor.getPrecioOro()){
                         ayunta.setMadera(ayunta.getMadera()-constructor.getPrecioMadera());
                         ayunta.setOro(ayunta.getOro()-constructor.getPrecioOro());
-                        ayunta.masUnaBarraca();
+                        ayunta.masUnConstructor();
                         System.out.println("Madera: " + ayunta.getMadera() + "Oro: " + ayunta.getOro());
                     }
                     else{
