@@ -19,6 +19,7 @@ public class EdificioAyuntamiento {
     private int superSoldado;
     private int ballesta;
     private int tanque;
+    private String raza;
 
     public EdificioAyuntamiento() {
         madera = 2000;
@@ -34,6 +35,7 @@ public class EdificioAyuntamiento {
         superSoldado = 0;
         ballesta = 0;
         tanque = 0;
+        this.raza= raza;
     }
 
     public int getMadera() {
@@ -165,6 +167,14 @@ public class EdificioAyuntamiento {
 
     public void setTanque() {
         tanque = tanque+1;
+    }
+
+    public String getRaza() {
+        return raza;
+    }
+
+    public void setRaza(String raza) {
+        this.raza = raza;
     }
     
 }

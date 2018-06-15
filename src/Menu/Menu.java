@@ -122,8 +122,8 @@ public class Menu {
         
         EdificioAyuntamiento ayuntaU1 = new EdificioAyuntamiento();
         EdificioAyuntamiento ayuntaU2 = new EdificioAyuntamiento();
-        //ayuntaU1.setRaza(u1.getRaza());
-        //ayuntaU2.setRaza(u2.getRaza());
+        ayuntaU1.setRaza(u1.getRaza());
+        ayuntaU2.setRaza(u2.getRaza());
         
         System.out.println("\n***INICIA EL JUEGO***\n");
         
