@@ -122,6 +122,8 @@ public class Menu {
         
         EdificioAyuntamiento ayuntaU1 = new EdificioAyuntamiento();
         EdificioAyuntamiento ayuntaU2 = new EdificioAyuntamiento();
+        //ayuntaU1.setRaza(u1.getRaza());
+        //ayuntaU2.setRaza(u2.getRaza());
         
         System.out.println("\n***INICIA EL JUEGO***\n");
         
@@ -284,7 +286,9 @@ public class Menu {
         
         int opc;
         do{
-            // raza 
+            // raza if(ayunta.getRaza == "ciratura){
+        // 
+        //}
             opc = teclado.nextInt();
             switch(opc){
                 case 1:
