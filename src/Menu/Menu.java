@@ -98,7 +98,7 @@ public class Menu {
         System.out.println("1. Criatura Magica");
         System.out.println("2. Elfo");
         System.out.println("3. Hechicero");
-        
+        System.out.println("Presione 0 cuando termine turno");
         int opc;
          do{
              System.out.print("Ingrese opcion: ");
@@ -114,9 +114,10 @@ public class Menu {
                 default:
                     System.out.println("Raza invalida");
         }
+             
         }while(opc > 0 && opc < 4);
          
-         return "0";
+         return "return";
     }
 
     private static void iniciaJuego() {
@@ -140,7 +141,7 @@ public class Menu {
                         ayuntaU1.getNumVehiculos() + " vehiculos\n" +
                         ayuntaU1.getSuperSoldado() + " super soldado\n" +
                         ayuntaU1.getBallesta() + " ballesta\n" + 
-                        ayuntaU1.getTanque() + " tanque");
+                        ayuntaU1.getTanque() + " tanque\n");
                 
                 accionesJuego(ayuntaU1, ayuntaU2);
                 
@@ -286,10 +287,14 @@ public class Menu {
     }
 
     private static void crearSoldados(EdificioAyuntamiento ayunta, EdificioAyuntamiento def) {
+        if(ayunta.getNumBarracas() != 0){
         System.out.println("Que soldado quieres crear?");
         System.out.println("1. Escuadron");
         System.out.println("2. SuperSoldado");
-        
+        System.out.println("Presione 0 cuando termine turno");
+        }else{
+                    System.out.println("No tienes taller");
+            }
         int opc;
         do{
             // raza if(ayunta.getRaza == "ciratura){
@@ -329,26 +334,30 @@ public class Menu {
     }
 
     private static void crearMilicia(EdificioAyuntamiento ayunta, EdificioAyuntamiento def) {
+        if(ayunta.getNumTaller()!= 0){
         System.out.println("Que Vehiculo quieres crear?");
         System.out.println("1. Ballesta");
         System.out.println("2. Tanque");
-        
+        System.out.println("Presione 0 cuando termine turno");  
+        }else{
+                    System.out.println("No tienes taller");
+            }
         int opc;
         do{
             opc = teclado.nextInt();
-            switch(opc){
-                case 1:
-                    if(ayunta.getMadera() > ballesta.getCosto()){
-                    ayunta.setOro(ayunta.getMadera()- ballesta.getCosto());
-                    ayunta.setBallesta();
-                    }
-                    else{
-                        System.out.println("Madera insuficiente para crear ballesta");
-                    }
-                    
-                    break;
-                case 2:
-                    
+                switch(opc){
+                    case 1:
+                        if(ayunta.getMadera() > ballesta.getCosto()){
+                            ayunta.setOro(ayunta.getMadera()- ballesta.getCosto());
+                            ayunta.setBallesta();
+                        }
+                        else{
+                            System.out.println("Madera insuficiente para crear ballesta");
+                        }
+                        
+                        break;
+                    case 2:
+                        
                         if(ayunta.getMadera()> tanque.getCosto()){
                             ayunta.setOro(ayunta.getMadera()- tanque.getCosto());
                             ayunta.setTanque();
@@ -357,11 +366,13 @@ public class Menu {
                             System.out.println("Madera insuficiente para crear tanque");
                             opc = 3;
                         }
-                    break;
+                        break;
                     default:
-                    break;
+                        System.out.println("es incorrecto");
+                        break;
+                }
             }
-        }while(opc > 0 && opc < 4);
+            while(opc > 0 && opc < 4);
         
     }
     //preguntar que raza es soldados 
