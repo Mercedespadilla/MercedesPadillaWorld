@@ -9,7 +9,7 @@ public class TanqueHechizero {
     public TanqueHechizero() {
         vida = 150;
         ataque = 700;
-        costo = 100;
+        costo = 150;
     }
 
     public int getVida() {

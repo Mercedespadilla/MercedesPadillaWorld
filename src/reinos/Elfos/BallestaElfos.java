@@ -14,7 +14,7 @@ public class BallestaElfos {
     public BallestaElfos() {
         vida = 50;
         ataque = 500;
-        costo = 80;
+        costo = 100;
     }
 
     public int getVida() {

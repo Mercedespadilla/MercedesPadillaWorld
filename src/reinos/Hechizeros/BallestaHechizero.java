@@ -9,7 +9,7 @@ public class BallestaHechizero {
     public BallestaHechizero() {
         vida = 50;
         ataque = 700;
-        costo = 80;
+        costo = 100;
     }
 
     public int getVida() {

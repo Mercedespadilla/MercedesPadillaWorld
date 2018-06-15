@@ -14,7 +14,7 @@ public class SuperSoldadoHechizero {
     public SuperSoldadoHechizero(int vida, int ataque, int costo) {
         vida = 200;
         ataque = 300;
-        costo = 80;
+        costo = 100;
     }
 
     public void setVida(int vida) {

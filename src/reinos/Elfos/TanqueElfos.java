@@ -9,7 +9,7 @@ public class TanqueElfos {
     public TanqueElfos() {
         vida = 150;
         ataque = 550;
-        costo = 100;
+        costo = 150;
     }
 
     public int getVida() {
